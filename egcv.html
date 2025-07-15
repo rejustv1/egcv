@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eren GÜLEŞ | CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* Reset ve temel */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: #0e0e0e;
+      color: #e0e0e0;
+      overflow: hidden;
+    }
+
+    /* Tam ekran wrapper */
+    .wrapper {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      height: 100vh;
+      max-width: 1200px;
+      margin: auto;
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 30px #00ffff55;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: #121212;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 20px #00ffff66;
+      position: relative;
+      z-index: 10;
+      overflow: auto;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border: 4px solid #00ffff;
+      box-shadow: 0 0 15px #00ffffcc;
+      flex-shrink: 0;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sidebar h1 {
+      margin-bottom: 0.25rem;
+      font-size: 2.2rem;
+      color: #00ffff;
+      text-align: center;
+    }
+
+    .sidebar .title {
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      color: #55ffffcc;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 0.9rem;
+      margin: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #aaa;
+    }
+
+    .contact p i {
+      color: #00ffff;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .socials {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .socials a {
+      color: #00ffff;
+      font-size: 1.6rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .socials a:hover,
+    .socials a:focus {
+      color: #ffffff;
+      transform: scale(1.2);
+      outline: none;
+    }
+
+    /* Content */
+    .content {
+      overflow-y: auto;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      height: 100%;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      border-left: 5px solid #00ffff;
+      padding-left: 12px;
+      margin-bottom: 1rem;
+      color: #00ffff;
+    }
+
+    section p, section ul {
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    /* Skills */
+    .skills .skill-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      gap: 1rem;
+    }
+
+    .skill {
+      background: #222222;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff33;
+      transition: transform 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: scale(1.05);
+    }
+
+    .skill p {
+      margin: 0 0 0.5rem 0;
+      font-weight: 600;
+      color: #00ffff;
+    }
+
+    .skill-bar {
+      background: #111111;
+      height: 12px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: #00ffff;
+      width: 0;
+      animation: fillBar 2s forwards;
+      border-radius: 8px;
+    }
+
+    .fill.html { animation-delay: 0.1s; width: 95%; }
+    .fill.js { animation-delay: 0.3s; width: 85%; }
+    .fill.react { animation-delay: 0.5s; width: 80%; }
+    .fill.node { animation-delay: 0.7s; width: 70%; }
+    .fill.figma { animation-delay: 0.9s; width: 65%; }
+
+    @keyframes fillBar {
+      from { width: 0; }
+      to { }
+    }
+
+    /* Projects */
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: #222;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 25px #00ffff44;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover,
+    .project-card:focus {
+      transform: translateY(-10px);
+      box-shadow: 0 0 40px #00ffffaa;
+      outline: none;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #00ffff;
+    }
+
+    .project-card p {
+      flex-grow: 1;
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      align-self: flex-start;
+      background: #00ffff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background: #00cccc;
+      outline: none;
+    }
+
+    /* Experience, Education, Languages, Hobbies */
+    section ul {
+      list-style: none;
+      padding-left: 0;
+      color: #ccc;
+    }
+
+    section ul li {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+
+    section ul li strong {
+      color: #00ffff;
+    }
+
+    /* Scrollbar styling */
+    .sidebar::-webkit-scrollbar,
+    .content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .sidebar::-webkit-scrollbar-track,
+    .content::-webkit-scrollbar-track {
+      background: #111;
+    }
+    .sidebar::-webkit-scrollbar-thumb,
+    .content::-webkit-scrollbar-thumb {
+      background: #00ffff;
+      border-radius: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .wrapper {
+        grid-template-columns: 1fr;
+        height: auto;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .sidebar {
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        margin-bottom: 1rem;
+      }
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+        margin-right: 1rem;
+        border-width: 3px;
+      }
+      .sidebar h1 {
+        font-size: 1.6rem;
+      }
+      .sidebar .title {
+        font-size: 1rem;
+      }
+      .contact {
+        display: none; /* Mobilde iletişim ikonlara alındı */
+      }
+      .socials {
+        margin-top: 0;
+        gap: 0.8rem;
+      }
+      .content {
+        padding: 1rem;
+        max-height: none;
+        overflow: visible;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar" data-aos="fade-right">
+      <div class="profile-pic">
+        <img src="https://i.pravatar.cc/150" alt="Profil Foto" />
+      </div>
+      <div>
+        <h1>Eren GÜLEŞ</h1>
+        <p class="title">Frontend Developer</p>
+        <div class="contact">
+          <p><i class="fas fa-envelope"></i> guleseren@mail.com</p>
+          <p><i class="fas fa-phone"></i> +90 xxx</p>
+          <p><i class="fas fa-map-marker-alt"></i> Kütahya, Türkiye</p>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content" data-aos="fade-left">
+      <section class="about">
+        <h2>Hakkımda</h2>
+        <p>Yaratıcı ve çözüm odaklı Frontend Developer. Modern web teknolojileri ile dinamik ve kullanıcı dostu arayüzler tasarlarım.</p>
+      </section>
+
+      <section class="skills">
+        <h2>Yetenekler</h2>
+        <div class="skill-list">
+          <div class="skill">
+            <p>HTML / CSS</p>
+            <div class="skill-bar"><div class="fill html"></div></div>
+          </div>
+          <div class="skill">
+            <p>JavaScript</p>
+            <div class="skill-bar"><div class="fill js"></div></div>
+          </div>
+          <div class="skill">
+            <p>React</p>
+            <div class="skill-bar"><div class="fill react"></div></div>
+          </div>
+          <div class="skill">
+            <p>Node.js</p>
+            <div class="skill-bar"><div class="fill node"></div></div>
+          </div>
+          <div class="skill">
+            <p>Figma</p>
+            <div class="skill-bar"><div class="fill figma"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects">
+        <h2>Projeler</h2>
+        <div class="project-cards">
+          <article class="project-card" tabindex="0">
+            <h3>Telefon İnceleme Sitesi</h3>
+            <p>HTML, CSS, JS kullanılarak geliştirilmiş mobil cihaz karşılaştırma platformu.</p>
+            <a href="#" class="btn">Projeye Git</a>
+          </article>
+          <article class="project-card" tabindex="0">
+            <h3>QR Araç İletişim</h3>
+            <p>Araç camına yapıştırılan QR ile sahibine kolayca ulaşmayı sağlar.</p>
+            <a href="#" class="btn">Projeye Git</a>
+          </article>
+          <article class="project-card" tabindex="0">
+            <h3>Portföy Sitesi</h3>
+            <p>Modern, hızlı ve duyarlı kişisel portföy sitesi.</p>
+            <a href="#" class="btn">Projeye Git</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="experience">
+        <h2>Deneyim</h2>
+        <ul>
+          <li><strong>Frontend Stajyer</strong> - ABC Teknoloji (2023 Yaz)</li>
+          <li><strong>Freelance Web Geliştirici</strong> - Çeşitli Projeler (2022-2023)</li>
+        </ul>
+      </section>
+
+      <section class="education">
+        <h2>Eğitim</h2>
+        <ul>
+          <li><strong>Bilgisayar Mühendisliği</strong> - İstanbul Üniversitesi (2020-2024)</li>
+        </ul>
+      </section>
+
+      <section class="languages">
+        <h2>Diller</h2>
+        <ul>
+          <li>Türkçe (Ana dil)</li>
+          <li>İngilizce (İleri seviye)</li>
+        </ul>
+      </section>
+
+      <section class="hobbies">
+        <h2>Hobiler</h2>
+        <ul>
+          <li>Tasarım</li>
+          <li>Fotoğrafçılık</li>
+          <li>Blog Yazarlığı</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  </script>
+</body>
+</html>
